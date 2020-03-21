@@ -1,5 +1,6 @@
 from wordcloud import WordCloud
 import nltk
+nltk.download('punkt')
 from collections import Counter
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
