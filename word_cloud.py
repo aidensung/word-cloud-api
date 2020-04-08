@@ -4,11 +4,11 @@ nltk.download('punkt')
 from collections import Counter
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app, resources={r'*': {'origins': 'https://word-cloud-a581f.firebaseio.com'}})
+CORS(app, resources={r"*": {"origins": "*"}})
 
 font_path = 'SECRCODE.TTF'
 
@@ -62,12 +62,14 @@ def process():
 
 
 @app.route('/outputs', methods=['GET', 'POST'])
+@cross_origin()
 def output():
     text_id = request.args.get('textID')
     return app.send_static_file(text_id + '.png')
 
 
 @app.route('/validate', methods=['GET', 'POST'])
+@cross_origin()
 def validate():
     text_id = request.args.get('textID')
     path = "outputs/{0}.png".format(text_id)
