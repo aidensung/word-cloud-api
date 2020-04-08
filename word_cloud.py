@@ -8,7 +8,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app, resources={r'*': {'origins': ['https://word-cloud-a581f.firebaseio.com', 'https://word-cloud-aiden.com']}})
+CORS(app, resources={r'*': {'origins': 'https://word-cloud-a581f.firebaseio.com'}})
 
 font_path = 'SECRCODE.TTF'
 
