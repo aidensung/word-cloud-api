@@ -8,13 +8,16 @@ from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app)
+CORS(app, support_credentials=True)
 
-@app.after_request
-def add_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', 'https://word-cloud-a581f.firebaseapp.com')
-    response.headers.add('Access-Control-Allow-Methods', 'PUT, GET, POST, PATCH, DELETE, OPTIONS')
-    return response
+
+@cross_origin(supports_credentials=True)
+def index():
+    if(request.method=='POST'):
+     some_json=request.get_json()
+     return jsonify({"key":some_json})
+    else:
+        return jsonify({"GET":"GET"})
 
 
 font_path = 'SECRCODE.TTF'
