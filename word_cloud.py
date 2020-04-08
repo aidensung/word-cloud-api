@@ -12,8 +12,8 @@ CORS(app)
 
 @app.after_request
 def add_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
+    response.headers.add('Access-Control-Allow-Origin', 'word-cloud-a581f.firebaseapp.com')
+    response.headers.add('Access-Control-Allow-Methods', 'PUT, GET, POST, PATCH, DELETE, OPTIONS')
     return response
 
 
