@@ -8,12 +8,14 @@ from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app, support_credentials=True)
+CORS(app)
 
 @app.after_request
 def add_headers(response):
+    response.headers.add('Content-Type', 'application/json')
     response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
+    return response
 
 
 font_path = 'SECRCODE.TTF'
