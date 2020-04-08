@@ -80,4 +80,4 @@ def validate():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=443, threaded=True, ssl_context='adhoc')
+    app.run('0.0.0.0', port=5000, threaded=True)
