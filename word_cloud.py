@@ -8,7 +8,14 @@ from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app)
+
+
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    return response
+
 
 font_path = 'SECRCODE.TTF'
 
@@ -50,7 +57,6 @@ def process_from_text(text, max_count, min_length, words, file_name):
 
 
 @app.route("/process", methods=['GET', 'POST'])
-@cross_origin(origin='*', headers=['access-control-allow-origin'])
 def process():
     content = request.json
     words = {}
@@ -63,14 +69,12 @@ def process():
 
 
 @app.route('/outputs', methods=['GET', 'POST'])
-@cross_origin(origin='*', headers=['access-control-allow-origin'])
 def output():
     text_id = request.args.get('textID')
     return app.send_static_file(text_id + '.png')
 
 
 @app.route('/validate', methods=['GET', 'POST'])
-@cross_origin(origin='*', headers=['access-control-allow-origin'])
 def validate():
     text_id = request.args.get('textID')
     path = "outputs/{0}.png".format(text_id)
