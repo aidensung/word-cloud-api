@@ -12,6 +12,7 @@ CORS(app, support_credentials=True)
 
 @cross_origin(supports_credentials=True)
 
+
 font_path = 'SECRCODE.TTF'
 
 
