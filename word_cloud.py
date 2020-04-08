@@ -13,6 +13,7 @@ CORS(app)
 @app.after_request
 def add_headers(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS')
     return response
 
 
