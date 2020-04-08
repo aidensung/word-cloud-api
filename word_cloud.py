@@ -17,6 +17,9 @@ def after_request(response):
     return response
 
 
+CORS(app)
+
+
 font_path = 'SECRCODE.TTF'
 
 
