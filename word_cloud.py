@@ -8,7 +8,7 @@ from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app, resources={r"*": {"origins": "*"}})
+CORS(app, headers={"access-control-allow-origin": "*"})
 
 
 font_path = 'SECRCODE.TTF'
