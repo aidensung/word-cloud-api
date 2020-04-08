@@ -8,16 +8,6 @@ from flask_cors import CORS, cross_origin
 import os
 
 app = Flask(__name__, static_folder='outputs')
-CORS(app, support_credentials=True)
-
-
-@cross_origin(supports_credentials=True)
-def index():
-    if(request.method=='POST'):
-     some_json=request.get_json()
-     return jsonify({"key":some_json})
-    else:
-        return jsonify({"GET":"GET"})
 
 
 font_path = 'SECRCODE.TTF'
