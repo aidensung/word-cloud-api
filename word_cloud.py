@@ -10,7 +10,10 @@ import os
 app = Flask(__name__, static_folder='outputs')
 CORS(app, support_credentials=True)
 
-@cross_origin(supports_credentials=True)
+@app.after_request
+def add_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
 
 
 font_path = 'SECRCODE.TTF'
