@@ -4,20 +4,11 @@ nltk.download('punkt')
 from collections import Counter
 import matplotlib.pyplot as plt
 from flask import Flask, request, jsonify
-from flask_cors import CORS, cross_origin
+from flask_cors import CORS
 import os
 
 app = Flask(__name__, static_folder='outputs')
-
-
-@app.after_request
-def after_request(response):
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
-    return response
-
-
-CORS(app)
+CORS(app, resources={r"*": {"origins": "*"}})
 
 
 font_path = 'SECRCODE.TTF'
